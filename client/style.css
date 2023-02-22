@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: gray;
+}
+
+header {
+  display: flex;
+  height: 10vh;
+  background-color: rgb(33, 33, 33);
+  width: 100%;
+  justify-content: space-between;
+}
+
+header > #user {
+  display: flex;
+}
+header > #user > img {
+  height: 9vh;
+}
+
+/*--------------------Home-----------------------*/
+
+.home {
+  height: 90vh;
+}
+
+.home > p {
+  padding: 0;
+  margin: 0;
+}
