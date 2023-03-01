@@ -1,0 +1,52 @@
+### api info
+
+GET http://localhost:3000/ HTTP/1.1
+
+### correct login
+POST http://localhost:3000/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "Matteo",
+    "password": "LB294"
+}
+
+### wrong login
+POST http://localhost:3000/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "Matteo",
+    "password": "wrongpassword"
+}
+
+### register a new user
+POST http://localhost:3000/register HTTP/1.1
+content-type: application/json
+
+{
+    "username": "Tester",
+    "password": "testo"
+}
+
+### change password of a user
+POST http://localhost:3000/changepassword HTTP/1.1
+content-type: application/json
+
+{
+    "username": "Matteo",
+    "oldpassword": "LB294",
+    "newpassword": "LB294-New"
+}
+
+### test new password
+POST http://localhost:3000/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "admin",
+    "password": "Lernatelier1304"
+}
+
+### get all user data
+GET http://localhost:3000/getuserlist HTTP/1.1
