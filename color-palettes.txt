@@ -1,0 +1,46 @@
+beige - grau (FAVORIT)
+
+#E5DCC3 | rgb(229, 220, 195) (beige, hell)
+#C7BEA2 | rgb(199, 190, 162) (beige, dunkel)
+#AAA492 | rgb(170, 164, 146) (beige, dünkler)
+#9A9483 | rgb(154, 148, 131) (beige, am dunkelsten)
+
+link: https://colorhunt.co/palette/e5dcc3c7bea2aaa4929a9483
+-------------------------------------------------------------
+rot - beige
+
+#A7727D | rgb(167, 114, 125) (rot, bordeaux)
+#EDDBC7 | rgb(167, 114, 125) (beige, dunkel)
+#F8EAD8 | rgb(248, 234, 216) (beige, mittlere Helligkeit)
+#F9F5E7 | rgb(249, 245, 231) (beige, hell)
+
+link: https://colorhunt.co/palette/a7727deddbc7f8ead8f9f5e7
+-------------------------------------------------------------
+
+orange - beige - grün
+
+#FFB100 | rgb(255, 177, 0)   (orange)
+#FBC252 | rgb(251, 194, 82)  (orange, gehellt mit beige)
+#F0ECCF | rgb(240, 236, 207) (beige)
+#A3BB98 | rgb(163, 187, 152) (grün)
+
+link: https://colorhunt.co/palette/ffb100fbc252f0eccfa3bb98
+-------------------------------------------------------------
+
+grün - beige
+
+#CCD6A6 | rgb(204, 214, 166) (grün,
+#DAE2B6 | rgb(218, 226, 182)
+#F4EAD5 | rgb(244, 234, 213)
+#FFFBE9 | rgb(255, 251, 233)
+ 
+link: https://colorhunt.co/palette/ccd6a6dae2b6f4ead5fffbe9
+-------------------------------------------------------------
+beige - grau (FAVORIT)
+
+#E5DCC3 | rgb(229, 220, 195) (beige, hell)
+#C7BEA2 | rgb(199, 190, 162) (beige, dunkel)
+#AAA492 | rgb(170, 164, 146) (beige, dünkler)
+#9A9483 | rgb(154, 148, 131) (beige, am dunkelsten)
+
+link: https://colorhunt.co/palette/e5dcc3c7bea2aaa4929a9483
