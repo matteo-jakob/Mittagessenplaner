@@ -12,22 +12,22 @@ module.exports = {
         );
 
         if (loginDB[req.body.username] == req.body.password) {
-          const jwt = require("jsonwebtoken");
-          const token = jwt.sign(
-            {
-              username: req.body.username,
-            },
-            "mySuperSecretKey",
-            {
-              expiresIn: "1337h",
-            }
-          );
-          console.log("Generated token: " + token);
-          res.json({
-            err: false,
-            login: true,
-            token: token,
-          });
+          // const jwt = require("jsonwebtoken");
+          // const token = jwt.sign(
+          //   {
+          //     username: req.body.username,
+          //   },
+          //   "mySuperSecretKey",
+          //   {
+          //     expiresIn: "1337h",
+          //   }
+          // );
+          // console.log("Generated token: " + token);
+          // res.json({
+          //   err: false,
+          //   login: true,
+          //   token: token,
+          // });
         } else {
           res.json({
             err: true,
