@@ -12,22 +12,10 @@ module.exports = {
         );
 
         if (loginDB[req.body.username] == req.body.password) {
-          // const jwt = require("jsonwebtoken");
-          // const token = jwt.sign(
-          //   {
-          //     username: req.body.username,
-          //   },
-          //   "mySuperSecretKey",
-          //   {
-          //     expiresIn: "1337h",
-          //   }
-          // );
-          // console.log("Generated token: " + token);
-          // res.json({
-          //   err: false,
-          //   login: true,
-          //   token: token,
-          // });
+          res.json({
+            err: false,
+            login: true,
+          });
         } else {
           res.json({
             err: true,
@@ -63,33 +51,6 @@ module.exports = {
         msg: "authorization error",
       });
     }
-  },
-
-  async changepassword(req, res) {
-    setTimeout(() => {
-      try {
-        if (loginDB[req.body.username] == req.body.oldpassword) {
-          loginDB[req.body.username] = req.body.newpassword;
-          res.json({
-            err: false,
-            change: true,
-            newPassword: loginDB[req.body.username],
-          });
-        } else {
-          res.json({
-            err: true,
-            change: false,
-            msg: "wrong user credentials",
-          });
-        }
-      } catch (error) {
-        console.error(error);
-        res.json({
-          err: true,
-          msg: "server error",
-        });
-      }
-    }, 1453);
   },
 
   async register(req, res) {
