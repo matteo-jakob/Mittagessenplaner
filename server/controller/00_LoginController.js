@@ -33,26 +33,6 @@ module.exports = {
     }, 1453);
   },
 
-  async auth(req, res) {
-    try {
-      const token = req.body.token;
-      console.log("Server token: " + token);
-      var jwtData = jwt.verify(token, "mySuperSecretKey");
-      if (jwtData) {
-        return res.json({
-          err: false,
-          msg: "authorization complete",
-        });
-      }
-    } catch (error) {
-      console.log("Server got error: " + error);
-      return res.json({
-        err: true,
-        msg: "authorization error",
-      });
-    }
-  },
-
   async register(req, res) {
     setTimeout(() => {
       try {
