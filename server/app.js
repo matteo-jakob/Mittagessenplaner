@@ -1,9 +1,9 @@
-const loginController = require("./controller/00_LoginController.js");
 const menuController = require("./controller/01_MenuController.js");
 
 const express = require("express");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
+const fs = require("fs");
 
 const app = express();
 
@@ -21,7 +21,6 @@ mongoose.connect(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-
 const RegisterSchema = new mongoose.Schema({
   Name: String,
   Surname: String,
@@ -36,37 +35,40 @@ const dbName = "Mittagessenplaner";
 app.get("/menu/getAll", menuController.getAll);
 
 // == LOGIN/REGISTER ==
+let userMatch = false;
 app.post("/login", async (req, res) => {
   const name = req.body.username;
   const password = req.body.password;
 
-  const client = await MongoClient.connect(url);
+  const client = await MongoClient.connect(url, {
+    serverSelectionTimeoutMS: 10000,
+  });
   const db = client.db(dbName);
   const collection = db.collection("Logindatens");
 
-  collection.findOne({ username: name }, function (err, user) {
+  collection.find().toArray(function (err, users) {
     if (err) {
-      console.log(err);
-      return res.status(500).send();
+      console.log("Error finding users in DB: ", err);
+      res
+        .status(500)
+        .json({ status: "error", message: "Internal server error" });
+      return;
     }
-    if (!user) {
-      return res.status(401).send("Username or password is incorrect");
-    }
-    bcrypt.compare(password, user.passwordR, function (err, result) {
-      if (err) {
-        console.log(err);
-        return res.status(500).send();
+    users.forEach(function (user) {
+      if (name == user.name && bcrypt.compare(password, user.passwordR)) {
+        userMatch = true;
       }
-      if (!result) {
-        return res.status(401).send("Username  password is incorrect");
-      }
-
-      return res.status(200).send("Login Successful");
     });
+    if (userMatch) {
+      const messageContent = `Hello ${name}`;
+      res.json({ status: "success", message: messageContent });
+    } else {
+      res.json({ status: "error", message: "Incorrect username or password" });
+    }
+
+    client.close();
   });
 });
-app.get("/login", loginController.login);
-app.post("/auth", loginController.auth);
 
 app.post("/register", async (req, res) => {
   const { name, surname, email, passwordR } = req.body;
@@ -88,9 +90,6 @@ app.post("/register", async (req, res) => {
     }
   );
 });
-
-app.get("/register", loginController.register);
-app.get("/getuserlist", loginController.getuserlist);
 
 app.listen(3000, function () {
   console.log("Server started on port 3000");
