@@ -1,12 +1,12 @@
 const menuDiv = document.querySelector("#menuContents");
 var items;
-
-fetch("http://127.0.0.1:5500/client/getall", {
+fetch("/getall", {
   method: "GET",
 })
   .then((response) => response.json())
   .then((response) => {
     items = response;
+    console.log(items);
   });
 
 var itemsList = items.menuList;
