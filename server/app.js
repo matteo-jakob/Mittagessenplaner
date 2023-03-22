@@ -51,17 +51,7 @@ app.post("/login", async (req, res) => {
   try {
     const user = await collection.findOne({ name: name });
 
-    if (!user) {
-      res.json({
-        status: "error",
-        message: "Incorrect username or password (first error)",
-      });
-      return;
-    }
-
-    const isPasswordMatched = await bcrypt.compare(password, user.passwordR);
-
-    if (isPasswordMatched) {
+    if (password == user.passwordR) {
       const messageContent = `Hello ${name}`;
       res.json({ status: "success", message: messageContent });
     } else {
