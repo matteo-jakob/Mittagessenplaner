@@ -1,0 +1,103 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.container-header{
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(41, 41, 40, 0.499), rgba(120, 115, 102, 0.553)), url(images/Screenshot\ 2023-03-22\ 062238.png);
+  background-size: cover;
+  background-position: relative;
+  ;
+  
+}
+.nav{
+  width: 90%;
+  margin: auto;
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo{
+  width: 80px;
+  cursor: pointer;
+}
+.nav ul li{
+  list-style: none;
+  display: inline-block;
+  margin: 0 50px;
+}
+.nav ul li a{
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+}
+.content{
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: white;
+}
+.content h1{
+  font-size: 90px;
+  margin-top: 80px;
+}
+.content p{
+  margin: 20px auto;
+font-size: 20px;  line-height: 25px;
+}
+.col-obsidian{
+  flex-basis: 43%;
+  flex-grow: 1;
+  background-image: linear-gradient(rgba(115, 111, 91, 0.474), rgba(148, 143, 126, 0.307)), url(images/Komp\ 1_00000.png);
+  background-size: cover;
+  background-position: center;
+  padding: 200px 0;
+  color: white;
+}
+
+.obsidian-text{
+  text-decoration: none;
+  margin-left: 550px;
+  width: 60%;
+  color: white;
+  
+}
+
+.obsidian-text h2{
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: white;
+
+}
+
+.obsidian-text p{
+  font-size: 18px;
+  color: white;
+}
+
+button {
+  width: 100px;
+  height: 40px;
+  padding: auto;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  margin-top: 30px;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  
+}
+
+button:hover {
+  background-color: rgb(216, 216, 216);
+
+
+}
