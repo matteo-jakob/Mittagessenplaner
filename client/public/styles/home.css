@@ -10,7 +10,7 @@
       rgba(41, 41, 40, 0.499),
       rgba(120, 115, 102, 0.553)
     ),
-    url(images/Screenshot\ 2023-03-22\ 062238.png);
+    url(../img/Screenshot\ 2023-03-22\ 062238.png);
   background-size: cover;
   background-position: relative;
 }
@@ -60,7 +60,7 @@
       rgba(115, 111, 91, 0.474),
       rgba(148, 143, 126, 0.307)
     ),
-    url(images/Komp\ 1_00000.png);
+    url(../img/Komp\ 1_00000.png);
   background-size: cover;
   background-position: center;
   padding: 200px 0;
