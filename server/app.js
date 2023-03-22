@@ -57,21 +57,26 @@ app.post("/login", async (req, res) => {
     }
 
     users.forEach(function (user) {
-      bcrypt.compare(password, user.passwordR, function (err, isPasswordMatched) {
-        if (err) {
-          // handle error
-        } else if (isPasswordMatched) {
-          const messageContent = `Hello ${name}`;
-          res.json({ status: "success", message: messageContent });
-        } else {
-          res.json({ status: "error", message: "Incorrect username or password" });
+      bcrypt.compare(
+        password,
+        user.passwordR,
+        function (err, isPasswordMatched) {
+          if (err) {
+            // handle error
+          } else if (isPasswordMatched) {
+            const messageContent = `Hello ${name}`;
+            res.json({ status: "success", message: messageContent });
+          } else {
+            res.json({
+              status: "error",
+              message: "Incorrect username or password",
+            });
+          }
         }
-      });
+      );
     });
-    
-    client.close();
-    
-
+  });
+});
 app.post("/register", async (req, res) => {
   const { name, surname, email, passwordR } = req.body;
 
