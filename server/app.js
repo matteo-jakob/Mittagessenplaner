@@ -39,6 +39,8 @@ app.get("/menu/getAll", menuController.getAll);
 // == LOGIN/REGISTER ==
 
 app.post("/login", async (req, res) => {
+  res.setHeader("Content-Type", "text/html");
+  res.sendFile(__dirname + "/index.html");
   const name = req.body.username;
   const password = req.body.password;
 
@@ -55,7 +57,9 @@ app.post("/login", async (req, res) => {
       const messageContent = `Hello ${name}`;
       res.json({ status: "success", message: messageContent });
     } else {
-      res.json({ status: "error", message: "Incorrect username or password" });
+      res
+        .status(401)
+        .json({ status: "error", message: "Incorrect username or password" });
     }
   } catch (err) {
     console.log("Error finding user in DB: ", err);
