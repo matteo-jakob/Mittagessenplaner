@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="shape.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>register Page</title>
+  </head>
+  <header>
+    <img
+      src="https://cdn.pixabay.com/photo/2016/12/27/13/10/logo-1933884_1280.png"
+      alt="logo"
+    />
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="shopping-cart.html">Shopping-Cart</a>
+    <a href="register.html">register</a>
+
+    <div id="user">
+      <h4 id="login-st">
+        You are not logged in <a href="login.html">Login</a>
+      </h4>
+      <img src="/img/User.webp" alt="User" />
+    </div>
+  </header>
+  <body>
+    <form action="/register" method="post">
+      Name: <input type="text" name="name" id="name" required /> Surname:
+      <input type="text" name="surname" id="surname" required /> <br />
+      Email: <input type="email" name="email" id="email" required />
+      <br />
+      Password:
+      <input type="password" name="passwordR" id="password" required /> <br />
+      <button type="submit" id="submit-btn">Submit</button>
+    </form>
+    <script src="00_script.js"></script>
+  </body>
+</html>
