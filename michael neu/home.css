@@ -53,7 +53,7 @@ font-size: 20px;  line-height: 25px;
 .col-obsidian{
   flex-basis: 43%;
   flex-grow: 1;
-  background-image: linear-gradient(rgba(115, 111, 91, 0.474), rgba(148, 143, 126, 0.307)), url(images/Komp\ 1_00000.png);
+  background: linear-gradient(90deg, rgba(229,220,195,0.5069637883008357) 0%, rgba(170,164,146,1) 100%), url(images/Komp\ 1_00000.png);
   background-size: cover;
   background-position: center;
   padding: 200px 0;
