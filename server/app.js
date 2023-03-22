@@ -13,6 +13,7 @@ app.use(express.json());
 
 const mongoose = require("mongoose");
 const { loadavg } = require("os");
+const { $ } = require("static");
 const MongoClient = require("mongodb").MongoClient;
 
 const url =
@@ -54,19 +55,26 @@ app.post("/login", async (req, res) => {
         .json({ status: "error", message: "Internal server error" });
       return;
     }
-    users.forEach(function (user) {
-      if (name == user.name && bcrypt.compare(password, user.passwordR)) {
-        userMatch = true;
-      }
-    });
-    if (userMatch) {
-      const messageContent = `Hello ${name}`;
-      res.json({ status: "success", message: messageContent });
-    } else {
-      res.json({ status: "error", message: "Incorrect username or password" });
-    }
 
-    client.close();
+    users.forEach(function (user) {
+      bcrypt.compare(
+        password,
+        user.passwordR,
+        function (err, isPasswordMatched) {
+          if (err) {
+            // handle error
+          } else if (isPasswordMatched) {
+            const messageContent = `Hello ${name}`;
+            res.json({ status: "success", message: messageContent });
+          } else {
+            res.json({
+              status: "error",
+              message: "Incorrect username or password",
+            });
+          }
+        }
+      );
+    });
   });
 });
 
