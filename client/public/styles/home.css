@@ -56,10 +56,7 @@
 .col-obsidian {
   flex-basis: 43%;
   flex-grow: 1;
-  background-image: linear-gradient(
-      rgba(115, 111, 91, 0.474),
-      rgba(148, 143, 126, 0.307)
-    ),
+  background: linear-gradient(90deg, rgba(229,220,195,0.46381880388874297) 0%, rgba(153,147,130,1) 56%, rgba(138,133,118,1) 100%),
     url(../img/Komp\ 1_00000.png);
   background-size: cover;
   background-position: center;
