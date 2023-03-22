@@ -8,6 +8,7 @@ const fs = require("fs");
 const app = express();
 
 app.use(express.static("../client/public"));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
