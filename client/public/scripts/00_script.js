@@ -10,13 +10,16 @@ fetch("/login", {
   .then((data) => {
     if (data.status === "success") {
       loginSt.innerHTML = data.message;
+      alert("Login Status: " + data.status + "\n" + data.message);
     } else {
-      console.log("Error:", response.statusText);
+      console.error("Error:", data.statusText);
+      alert("Login Status: " + data.status);
     }
   })
   .catch((error) => {
     console.error(error);
   });
+
 var menuDiv = document.getElementById("menuContents");
 var items;
 fetch("/getall", {

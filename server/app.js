@@ -8,6 +8,7 @@ const fs = require("fs");
 const app = express();
 
 app.use(express.static("../client/public"));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -36,7 +37,7 @@ const dbName = "Mittagessenplaner";
 app.get("/menu/getAll", menuController.getAll);
 
 // == LOGIN/REGISTER ==
-let userMatch = false;
+
 app.post("/login", async (req, res) => {
   const name = req.body.username;
   const password = req.body.password;
@@ -47,35 +48,21 @@ app.post("/login", async (req, res) => {
   const db = client.db(dbName);
   const collection = db.collection("Logindatens");
 
-  collection.find().toArray(function (err, users) {
-    if (err) {
-      console.log("Error finding users in DB: ", err);
-      res
-        .status(500)
-        .json({ status: "error", message: "Internal server error" });
-      return;
-    }
+  try {
+    const user = await collection.findOne({ name: name });
 
-    users.forEach(function (user) {
-      bcrypt.compare(
-        password,
-        user.passwordR,
-        function (err, isPasswordMatched) {
-          if (err) {
-            // handle error
-          } else if (isPasswordMatched) {
-            const messageContent = `Hello ${name}`;
-            res.json({ status: "success", message: messageContent });
-          } else {
-            res.json({
-              status: "error",
-              message: "Incorrect username or password",
-            });
-          }
-        }
-      );
-    });
-  });
+    if (password == user.passwordR) {
+      const messageContent = `Hello ${name}`;
+      res.json({ status: "success", message: messageContent });
+    } else {
+      res.json({ status: "error", message: "Incorrect username or password" });
+    }
+  } catch (err) {
+    console.log("Error finding user in DB: ", err);
+    res.status(500).json({ status: "error", message: "Internal server error" });
+  } finally {
+    client.close();
+  }
 });
 
 app.post("/register", async (req, res) => {
