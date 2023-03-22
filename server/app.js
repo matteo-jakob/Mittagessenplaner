@@ -13,6 +13,7 @@ app.use(express.json());
 
 const mongoose = require("mongoose");
 const { loadavg } = require("os");
+const { $ } = require("static");
 const MongoClient = require("mongodb").MongoClient;
 
 const url =
@@ -54,25 +55,22 @@ app.post("/login", async (req, res) => {
         .json({ status: "error", message: "Internal server error" });
       return;
     }
-    users.forEach(function (user) {
-      if (name == user.name && bcrypt.compare(password, user.passwordR)) {
-        userMatch = true;
-      }
-    });
-    if (userMatch) {
-      const messageContent = `Hello ${name}`;
-      res.json({ status: "success", message: messageContent });
-    } else {
-      res.json({ status: "error", message: "Incorrect username or password" });
-    }
 
+    users.forEach(function (user) {
+      bcrypt.compare(password, user.passwordR, function (err, isPasswordMatched) {
+        if (err) {
+          // handle error
+        } else if (isPasswordMatched) {
+          const messageContent = `Hello ${name}`;
+          res.json({ status: "success", message: messageContent });
+        } else {
+          res.json({ status: "error", message: "Incorrect username or password" });
+        }
+      });
+    });
+    
     client.close();
-  });
-});
-<<<<<<< HEAD
-=======
-app.get("/login", loginController.login);
->>>>>>> 5c1376231bc686ab8386e789ee8847a48b8cf722
+    
 
 app.post("/register", async (req, res) => {
   const { name, surname, email, passwordR } = req.body;
@@ -95,13 +93,6 @@ app.post("/register", async (req, res) => {
   );
 });
 
-<<<<<<< HEAD
-=======
-app.get("/register", loginController.register);
-app.get("/getuserlist", loginController.getuserlist);
-app.get("/getall", menuController.getAll);
-
->>>>>>> 5c1376231bc686ab8386e789ee8847a48b8cf722
 app.listen(3000, function () {
   console.log("Server started on port 3000");
 });
