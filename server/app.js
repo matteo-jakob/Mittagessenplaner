@@ -77,6 +77,7 @@ app.post("/login", async (req, res) => {
       );
     });
   });
+  client.close();
 });
 
 app.post("/register", async (req, res) => {
