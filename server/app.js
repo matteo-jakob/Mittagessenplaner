@@ -39,8 +39,6 @@ app.get("/menu/getAll", menuController.getAll);
 // == LOGIN/REGISTER ==
 
 app.post("/login", async (req, res) => {
-  res.setHeader("Content-Type", "text/html");
-  res.sendFile(__dirname + "/index.html");
   const name = req.body.username;
   const password = req.body.password;
 
@@ -53,9 +51,22 @@ app.post("/login", async (req, res) => {
   try {
     const user = await collection.findOne({ name: name });
 
+    if (!user) {
+      // user not found
+      res.status(401).json({ status: "error", message: "User not found" });
+      return;
+    }
+
     if (password == user.passwordR) {
       const messageContent = `Hello ${name}`;
-      res.json({ status: "success", message: messageContent });
+
+      const newInnerHTML = "Logged In Successfully";
+      const jsCode = `document.querySelector('.loginStatus').innerHTML = '${newInnerHTML}';`;
+      res.write(`<script>${jsCode}</script>`); // send a script tag to the browser
+
+      // send a response with a success message
+      console.log(messageContent);
+      // update the innerHTML of the p tag with class "loginStatus"
     } else {
       res
         .status(401)

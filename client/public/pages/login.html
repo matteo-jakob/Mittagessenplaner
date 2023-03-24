@@ -23,15 +23,15 @@
     </div>
   </header>
   <body>
-    <form id="loginForm">
+    <form id="loginForm" method="post" action="/login">
       Login: <input type="username" name="username" id="username" required />
       <br />
       Password:
       <input type="password" name="password" id="password" required /> <br />
       <button type="submit" id="submit-btn">Submit</button>
+      <p class="loginStatus">Login at First</p>
     </form>
-    <p class="loginStatus">Login at First</p>
     <a href="register.html">Register</a>
-    <script src="00_script.js" type="text/javascript"></script>
+    <script src="../scripts/00_script.js" type="text/javascript"></script>
   </body>
 </html>
