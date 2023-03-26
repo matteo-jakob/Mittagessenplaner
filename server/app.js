@@ -54,7 +54,7 @@ app.get("/shopping-cartEJS", (req, res) => {
 });
 
 app.get("/registerEJS", (req, res) => {
-  res.render("register.ejs");
+  res.render("login.ejs");
 });
 // == LOGIN/REGISTER ==
 
@@ -121,8 +121,8 @@ app.post("/register", async (req, res) => {
         console.log(result);
       }
       const success = "You are sucessfully registered";
-      res.render("register", {
-        title: "Login",
+      res.render("login", {
+        title: "register",
         registerMessage: success,
       });
     }

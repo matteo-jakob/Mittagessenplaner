@@ -53,7 +53,7 @@
   font-size: 20px;
   line-height: 25px;
 }
-.col-obsidian {
+.col-aboutus {
   flex-basis: 43%;
   flex-grow: 1;
   background: linear-gradient(90deg, rgba(229,220,195,0.46381880388874297) 0%, rgba(153,147,130,1) 56%, rgba(138,133,118,1) 100%),
@@ -64,21 +64,21 @@
   color: white;
 }
 
-.obsidian-text {
+.aboutus-text {
   text-decoration: none;
   margin-left: 550px;
   width: 60%;
   color: white;
 }
 
-.obsidian-text h2 {
+.aboutus-text h2 {
   font-size: 50px;
   font-weight: 600;
   margin-bottom: 30px;
   color: white;
 }
 
-.obsidian-text p {
+.aboutus-text p {
   font-size: 18px;
   color: white;
 }
@@ -173,4 +173,52 @@ padding-left: 10px;
   background-position: center;
   padding: 275px 0;
   color: white;
+}
+.footer{
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgb(170, 164, 146);
+  height: auto;
+  padding-top: 15px;
+ 
+}
+.footer-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: white;
+}
+.footer-content h3{
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  line-height: 3rem;
+}
+.footer-content p{
+  max-width: 500px;
+  margin: 10px auto;
+  line-height: 28px;
+  font-size: 14px;
+}
+.footer-bottom{
+  background: rgb(154, 148, 131);
+  width: 100vw;
+  padding: 20px 0;
+  text-align: center;
+  color: white;
+}
+.footer-bottom p{
+  font-size: 14px;
+  word-spacing: 2px;
+  text-transform: capitalize;
+}
+.footer-bottom span{
+  text-transform: uppercase;
+  opacity: .4;
+  font-weight: 200;
 }

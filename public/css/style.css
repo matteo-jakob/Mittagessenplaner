@@ -42,3 +42,25 @@ header>#user>img {
 .login-fail {
   background-image: url(/img/User.webp);
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: gray;
+}
+
+header {
+  display: flex;
+  height: 10vh;
+  background-color: rgb(33, 33, 33);
+  width: 100%;
+  justify-content: space-between;
+}
+
+header>#user {
+  display: flex;
+}
+
+header>#user>img {
+  height: 9vh;
+}

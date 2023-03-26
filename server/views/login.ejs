@@ -4,33 +4,97 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/login michael.css" />
+    <title>BitePlanr | Account</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <div class="container-header">
+      <div class="nav">
+        <a href="/"><img src="../img/logo_white.png" class="logo" /> </a>
+        <ul>
+          <li><a href="/">HOME</a></li>
+          <li><a href="/shopping-cartEJS" class="fas fa-cart-shopping"></a></li>
+          <li><a href="#" class="fas fa-user"></a></li>
 
-    <title>Login Page</title>
+        </ul>
+      </div>
   </head>
   <header>
-    <img
-      src="https://cdn.pixabay.com/photo/2016/12/27/13/10/logo-1933884_1280.png"
-      alt="logo"
-    />
-    <li><a href="/">HOME</a></li>
-    <li><a href="/menuEJS">MENU</a></li>
-    <li><a href="/loginEJS" class="loginejs">LOGIN</a></li>
-    <li><a href="/shopping-cartEJS" class="fas fa-cart-shopping"></a></li>
-    <a href="/registerEJS" class="registerejs">register</a>
-  </header>
   <body>
-    <form id="loginForm" method="post" action="/login">
-      Login: <input type="username" name="username" id="username" required />
+    <div class="form-box">
+      <h1>Login</h1>
+      <form id="loginForm" method="post" action="/login">
+        Login: <input type="text" name="username" id="username" required />
+        <br />
+        Password:
+        <input type="password" name="password" id="password" required /> <br />
+        <button type="submit" id="submit-btn">Submit</button>
+      </form>
+      <div id="login-message">
+        <% if (typeof loginMessage !== 'undefined') { %>
+        <p><%= loginMessage %></p>
+        <% } %>
+      </div>
+      <div class="switch">
+        <a href="#" id="register-link">No account? Register here.</a>
+      </div>
+    </div>
+
+
+
+  <div class="form-box" style="display: none" id="register-form-box">
+    <h1>Register</h1>
+    <form action="/register" method="post">
+      Name: <input type="text" name="name" id="name" required /> Surname:
+      <input type="text" name="surname" id="surname" required /> <br />
+      Email: <input type="email" name="email" id="email" required />
       <br />
       Password:
-      <input type="password" name="password" id="password" required /> <br />
+      <input type="password" name="passwordR" id="password" required /> <br />
       <button type="submit" id="submit-btn">Submit</button>
     </form>
-    <div id="login-message">
-      <% if (typeof loginMessage !== 'undefined') { %>
-      <p><%= loginMessage %></p>
+    <div class="switch">
+      <a href="#" id="login-link">Already have an account? Login here.</a>
+    </div>
+    <div id="register-message">
+      <% if (typeof registerMessage !== 'undefined') { %>
+      <p ><%= registerMessage %></p>
       <% } %>
     </div>
+  </div>
+
+ //After registering stay at register form
+ //If logged in is sucessful pass the name to ejs file and make the name visible in home page
+ // Menu link in navbar should appear after being logeed
+ 
+
+
+    <script>
+const loginFormBox = document.querySelector(".form-box");
+const registerFormBox = document.querySelector("#register-form-box");
+
+const loginLink = document.querySelector("#login-link");
+const registerLink = document.querySelector("#register-link");
+
+registerLink.addEventListener("click", function (e) {
+  e.preventDefault();
+  loginFormBox.style.display = "none";
+  registerFormBox.style.display = "block";
+});
+
+loginLink.addEventListener("click", function (e) {
+  e.preventDefault();
+  registerFormBox.style.display = "none";
+  loginFormBox.style.display = "block";
+});
+
+    </script>
   </body>
 </html>
+
+
+
+

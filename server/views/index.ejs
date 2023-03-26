@@ -4,10 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Comparison</title>
+    <title>BitePlanr | Home</title>
     <link rel="stylesheet" href="css/home.css" />
-    <link rel="stylesheet" href="css/style.css" />
-
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
@@ -19,19 +17,10 @@
         <a href="/"><img src="../img/logo_white.png" class="logo" /> </a>
         <ul>
           <li><a href="/">HOME</a></li>
-          <li><a href="/menuEJS">MENU</a></li>
-          <li><a href="/loginEJS" id="login-link">LOGIN</a></li>
+          <li><a href="/loginEJS" id="login-link">LOGIN / REGISTER</a></li>
           <li><a href="/shopping-cartEJS" class="fas fa-cart-shopping"></a></li>
           <li><a href="#" class="fas fa-user"></a></li>
-          <div id="user">
-            <% if (typeof loginMessage !== 'undefined') { %>
-            <script>
-              const loginLink = document.getElementById("login-link");
-              loginLink.innerHTML = "<%= loginMessage %>";
-              loginLink.href = "#";
-            </script>
-            <% } else { %> <% } %>
-          </div>
+ 
         </ul>
       </div>
       <div class="content">
@@ -39,8 +28,8 @@
         <p>Plan better. Eat better. Feel better.</p>
       </div>
     </div>
-    <div class="col-obsidian">
-      <div class="obsidian-text">
+    <div class="col-aboutus">
+      <div class="aboutus-text">
         <h2>About Us</h2>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste,
@@ -55,12 +44,58 @@
           doloribus aspernatur similique id voluptates a voluptatum unde
           corporis sequi, impedit nostrum alias totam autem rem sunt modi?
           Repellat, minus eaque!
-          <a class="more-obsidian" href="obsidian.html"
+          <a class="more-aboutus" href="obsidian.html"
             ><button>more</button></a
           >
         </p>
       </div>
     </div>
-    <script src="../../client/scripts/00_script.js"></script>
+    <div class="service">
+      <div class="title">
+        <h2>Our Services</h2>
+      </div>
+      <div class="box"><div class="card">
+        <i class="fa-solid fa-bowl-food"></i>
+                <h5>Meal Planning</h5>
+        <div class="pra">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam facilis voluptates necessitatibus omnis quia quaerat odit. Expedita, animi. Porro dolorem enim, neque quas expedita repellat aut nobis omnis sequi deserunt!</p>
+        </div>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-tags"></i>
+        <h5>Affordable Meals</h5>
+        <div class="pra">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam facilis voluptates necessitatibus omnis quia quaerat odit. Expedita, animi. Porro dolorem enim, neque quas expedita repellat aut nobis omnis sequi deserunt!</p>
+        </div>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-user"></i>
+        <h5>Account Management</h5>
+        <div class="pra">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam facilis voluptates necessitatibus omnis quia quaerat odit. Expedita, animi. Porro dolorem enim, neque quas expedita repellat aut nobis omnis sequi deserunt!</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+      <div class="order">
+        <div class="text-box">
+          <h1>Hungry?</h1>
+          <p>Create your menu and place an order!</p>
+          
+        </div>
+      </div>
+      <div class="footer">
+        <div class="footer-content">
+          <h3>BitePlanr</h3>
+          <p>Diese Website ist ein Projekt für das Lernatelier und dient als Übung.</p>
+          
+      </div>
+      <div class="footer-bottom">
+          <p>copyright &copy;2023 BBBaden. | Alek Cvetkovski, Elbish Bhusal, Matteo Jakob & Michael Ruzicic</span></p>
+      </div>
+      </div>
+      <script src="../public/scripts/00_script.js"></script>
+      <script src="../../server/app.js"></script>
   </body>
 </html>
