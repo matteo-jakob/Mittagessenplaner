@@ -12,10 +12,11 @@ header {
   justify-content: space-between;
 }
 
-header > #user {
+header>#user {
   display: flex;
 }
-header > #user > img {
+
+header>#user>img {
   height: 9vh;
 }
 
@@ -25,7 +26,19 @@ header > #user > img {
   height: 90vh;
 }
 
-.home > p {
+.home>p {
   padding: 0;
   margin: 0;
+}
+
+.no-picture-show {
+  visibility: hidden;
+}
+
+.login-suc {
+  background-image: url(/img/login_yes.png);
+}
+
+.login-fail {
+  background-image: url(/img/User.webp);
 }

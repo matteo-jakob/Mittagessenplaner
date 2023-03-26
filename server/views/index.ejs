@@ -16,13 +16,22 @@
   <body>
     <div class="container-header">
       <div class="nav">
-        <a href="/"><img src="/client/img/logo_white.png" class="logo" /> </a>
+        <a href="/"><img src="../img/logo_white.png" class="logo" /> </a>
         <ul>
           <li><a href="/">HOME</a></li>
           <li><a href="/menuEJS">MENU</a></li>
-          <li><a href="/loginEJS">LOGIN</a></li>
-          <li><a href="#" class="fas fa-cart-shopping"></a></li>
+          <li><a href="/loginEJS" id="login-link">LOGIN</a></li>
+          <li><a href="/shopping-cartEJS" class="fas fa-cart-shopping"></a></li>
           <li><a href="#" class="fas fa-user"></a></li>
+          <div id="user">
+            <% if (typeof loginMessage !== 'undefined') { %>
+            <script>
+              const loginLink = document.getElementById("login-link");
+              loginLink.innerHTML = "<%= loginMessage %>";
+              loginLink.href = "#";
+            </script>
+            <% } else { %> <% } %>
+          </div>
         </ul>
       </div>
       <div class="content">
@@ -52,7 +61,6 @@
         </p>
       </div>
     </div>
-    <script src="../public/scripts/00_script.js"></script>
-    <script src="../../server/app.js"></script>
+    <script src="../../client/scripts/00_script.js"></script>
   </body>
 </html>

@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/public/css/style.css" />
-    <link rel="stylesheet" href="/public/css/home.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
     <title>register Page</title>
   </head>
   <header>
@@ -13,15 +13,12 @@
       src="https://cdn.pixabay.com/photo/2016/12/27/13/10/logo-1933884_1280.png"
       alt="logo"
     />
-    <a href="../index.html">Home</a>
-    <a href="menu.html">Menu</a>
-    <a href="shopping-cart.html">Shopping-Cart</a>
-    <a href="register.html">register</a>
+    <a href="/indexEJS">Home</a>
+    <a href="/menuEJS">Menu</a>
+    <a href="/shopping-cartEJS">Shopping-Cart</a>
 
     <div id="user">
-      <h4 id="login-st">
-        You are not logged in <a href="login.html">Login</a>
-      </h4>
+      <h4 id="login-st">You are not logged in <a href="/loginEJS">Login</a></h4>
       <img src="/img/User.webp" alt="User" />
     </div>
   </header>
@@ -35,6 +32,12 @@
       <input type="password" name="passwordR" id="password" required /> <br />
       <button type="submit" id="submit-btn">Submit</button>
     </form>
+
+    <div id="register-message">
+      <% if (typeof registerMessage !== 'undefined') { %>
+      <p><%= registerMessage %></p>
+      <% } %>
+    </div>
     <script src="../public/scripts/00_script.js"></script>
     <script src="../../server/app.js"></script>
   </body>

@@ -45,6 +45,13 @@ app.get("/", (req, res) => {
 app.get("/loginEJS", (req, res) => {
   res.render("login.ejs");
 });
+app.get("/menuEJS", (req, res) => {
+  res.render("menu.ejs");
+});
+
+app.get("/shopping-cartEJS", (req, res) => {
+  res.render("shopping-cart.ejs");
+});
 
 app.get("/registerEJS", (req, res) => {
   res.render("register.ejs");
@@ -66,28 +73,32 @@ app.post("/login", async (req, res) => {
 
     if (!user) {
       // user not found
-      res.status(401).json({ status: "error", message: "User not found" });
-      return;
+      const Nuser = "User not Found in my Database";
+      res.render("login", {
+        title: "Login",
+        loginMessage: Nuser,
+      });
     }
 
     if (password == user.passwordR) {
-      const messageContent = `Hello ${name}`;
-
-      const newInnerHTML = "Logged In Successfully";
-      const jsCode = `document.querySelector('.loginStatus').innerHTML = '${newInnerHTML}';`;
-      res.write(`<script>${jsCode}</script>`); // send a script tag to the browser
-
       // send a response with a success message
+      const messageContent = `Hello ${name}`;
       console.log(messageContent);
-      // update the innerHTML of the p tag with class "loginStatus"
+
+      res.redirect("/");
     } else {
-      res
-        .status(401)
-        .json({ status: "error", message: "Incorrect username or password" });
+      const loginMessage = "Incorrect username or password";
+      res.render("login", {
+        title: "Login",
+        loginMessage: loginMessage,
+      });
     }
   } catch (err) {
-    console.log("Error finding user in DB: ", err);
-    res.status(500).json({ status: "error", message: "Internal server error" });
+    const ServerError = "Server Error! Try Again";
+    res.render("login", {
+      title: "Login",
+      loginMessage: ServerError,
+    });
   } finally {
     client.close();
   }
@@ -109,7 +120,11 @@ app.post("/register", async (req, res) => {
       } else {
         console.log(result);
       }
-      res.send("You are sucessfully registered");
+      const success = "You are sucessfully registered";
+      res.render("register", {
+        title: "Login",
+        registerMessage: success,
+      });
     }
   );
 });

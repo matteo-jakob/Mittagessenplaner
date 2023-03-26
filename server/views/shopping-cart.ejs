@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/public/css/style.css" />
-    <link rel="stylesheet" href="/public/css/home.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Shopping Cart</title>
   </head>
   <body>
@@ -14,14 +14,17 @@
         src="https://cdn.pixabay.com/photo/2016/12/27/13/10/logo-1933884_1280.png"
         alt="logo"
       />
-      <a href="../index.html">Home</a>
-      <a href="menu.html">Menu</a>
-      <a href="shopping-cart.html">Shopping-Cart</a>
+      <li><a href="/">HOME</a></li>
+      <li><a href="/menuEJS">MENU</a></li>
+      <li><a href="/shopping-cartEJS" class="fas fa-cart-shopping"></a></li>
       <div id="user">
-        <h4 id="login-st">
-          You are not logged in <a href="login.html">Login</a>
-        </h4>
-        <img src="../img/User.webp" alt="User" />
+        <% if (typeof loginMessage !== 'undefined') { %>
+        <img src="img/login_yes.png" />
+
+        <% } else { %>
+        <img src="img/User.webp" />
+
+        <% } %>
       </div>
     </header>
     <div class="home">
