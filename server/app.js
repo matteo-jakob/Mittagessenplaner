@@ -7,7 +7,9 @@ const fs = require("fs");
 
 const app = express();
 
-app.use(express.static("../client/public"));
+app.set("view engine", "ejs");
+
+app.use(express.static("../public")); // set the public directory
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
@@ -15,6 +17,7 @@ app.use(express.json());
 const mongoose = require("mongoose");
 const { loadavg } = require("os");
 const { $ } = require("static");
+const { dirname } = require("path");
 const MongoClient = require("mongodb").MongoClient;
 
 const url =
@@ -33,9 +36,19 @@ const Register = mongoose.model("Logindaten", RegisterSchema);
 const dbName = "Mittagessenplaner";
 
 // ========================================= API ===================================================
-
 app.get("/menu/getAll", menuController.getAll);
 
+app.get("/", (req, res) => {
+  res.render("index.ejs");
+});
+
+app.get("/loginEJS", (req, res) => {
+  res.render("login.ejs");
+});
+
+app.get("/registerEJS", (req, res) => {
+  res.render("register.ejs");
+});
 // == LOGIN/REGISTER ==
 
 app.post("/login", async (req, res) => {
