@@ -69,3 +69,4 @@ fetch("/getall", {
       console.log("Added Item " + itemsList[i].item);
     }
   });
+

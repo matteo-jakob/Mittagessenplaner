@@ -50,7 +50,12 @@ app.get("/menuEJS", (req, res) => {
 });
 
 app.get("/shopping-cartEJS", (req, res) => {
-  res.render("shopping-cart.ejs");
+  const items = [
+    { item: "Potatoes", price: 10, image_url: "https://cdn.pixabay.com/photo/2016/08/11/08/43/potatoes-1585060_1280.jpg" },
+    { item: "Rice", price: 8, image_url: "https://cdn.pixabay.com/photo/2019/02/15/03/28/rice-3997767_1280.jpg" }
+  ]
+  res.render("shopping-cart.ejs", { items: items });
+
 });
 
 app.get("/registerEJS", (req, res) => {
