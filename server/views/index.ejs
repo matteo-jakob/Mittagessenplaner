@@ -17,13 +17,26 @@
         <a href="/"><img src="../img/logo_white.png" class="logo" /> </a>
         <ul>
           <li><a href="/">HOME</a></li>
-          <li><a href="/loginEJS" id="login-link">LOGIN / REGISTER</a></li>
+          <li><a id="login-link" href="/loginEJS">LOGIN | REGISTER</a></li>
           <li><a href="/shopping-cartEJS" class="fas fa-cart-shopping"></a></li>
           <li><a href="#" class="fas fa-user"></a></li>
- 
+          <div id="user">
+            <% if (typeof loginMessage !== 'undefined') { %>
+              <script>
+          const loginLink = document.getElementById('login-link');
+          const capitalizedMessage = '<%= loginMessage %>'.toUpperCase();
+          loginLink.innerHTML = capitalizedMessage;
+          loginLink.href = '#';
+                const homeLink = document.querySelector('.nav li:first-child');
+                homeLink.insertAdjacentHTML('afterend', '<li><a href="/menuEJS" class="nav-menu">MENU</a></li>');
+
+           
+              </script>
+            <% } else { %> <% } %>
+          </div>
         </ul>
-        
       </div>
+    </div>
       <div class="content">
         <h1>BitePlanr</h1>
         <p>Plan better. Eat better. Feel better.</p>
@@ -96,15 +109,9 @@
           <p>copyright &copy;2023 BBBaden. | Alek Cvetkovski, Elbish Bhusal, Matteo Jakob & Michael Ruzicic</span></p>
       </div>
       </div>
-      <script>
-     const loginLink = document.getElementById('login-link');
-        if (typeof loggedIn !== 'undefined') { 
-          loginLink.innerHTML = "Hello Kali";
-        } else { 
-          loginLink.innerHTML = 'Login / Register';
-        } 
-      </script>
-   
+
+
+      
       
   </body>
 </html>

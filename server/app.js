@@ -46,16 +46,43 @@ app.get("/loginEJS", (req, res) => {
   res.render("login.ejs");
 });
 app.get("/menuEJS", (req, res) => {
-  res.render("menu.ejs");
+  const items = [
+    {
+      item: "Potatoes",
+      price: 10,
+      image_url:
+        "https://cdn.pixabay.com/photo/2016/08/11/08/43/potatoes-1585060_1280.jpg",
+    },
+    {
+      item: "Rice",
+      price: 8,
+      image_url:
+        "https://cdn.pixabay.com/photo/2019/02/15/03/28/rice-3997767_1280.jpg",
+    },
+    {
+      item: "Flour",
+      price: 10,
+      image_url:
+        "https://cdn.pixabay.com/photo/2020/05/12/17/54/rolling-pin-5164240_960_720.jpg",
+    },
+    {
+      item: "Water",
+      price: 3,
+      image_url:
+        "https://cdn.pixabay.com/photo/2018/07/09/15/20/desire-3526366_960_720.jpg",
+    },
+    {
+      item: "Cola",
+      price: 4.5,
+      image_url:
+        "https://cdn.pixabay.com/photo/2016/11/29/13/49/bottle-1869990_960_720.jpg",
+    },
+  ];
+  res.render("menu.ejs", { items: items });
 });
 
 app.get("/shopping-cartEJS", (req, res) => {
-  const items = [
-    { item: "Potatoes", price: 10, image_url: "https://cdn.pixabay.com/photo/2016/08/11/08/43/potatoes-1585060_1280.jpg" },
-    { item: "Rice", price: 8, image_url: "https://cdn.pixabay.com/photo/2019/02/15/03/28/rice-3997767_1280.jpg" }
-  ]
-  res.render("shopping-cart.ejs", { items: items });
-
+  res.render("shopping-cart.ejs");
 });
 
 app.get("/registerEJS", (req, res) => {
@@ -87,11 +114,12 @@ app.post("/login", async (req, res) => {
 
     if (password == user.passwordR) {
       // send a response with a success message
-      req.session.loggedIn = true;
       const messageContent = `Hello ${name}`;
       console.log(messageContent);
-
-      res.redirect("/");
+      res.render("index", {
+        title: "Login",
+        loginMessage: `${name}`,
+      });
     } else {
       const loginMessage = "Incorrect username or password";
       res.render("login", {
@@ -108,14 +136,6 @@ app.post("/login", async (req, res) => {
   } finally {
     client.close();
   }
-});
-
-app.get("/", function (req, res) {
-  const messageContent = `Hello ${name}`;
-  res.render("index", {
-    loggedIn: req.session.loggedIn,
-    loginMessage: messageContent,
-  });
 });
 
 app.post("/register", async (req, res) => {

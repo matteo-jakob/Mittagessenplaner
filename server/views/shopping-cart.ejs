@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/login michael.css" />
-    <link rel="stylesheet" href="css/shopping-cart-Matteo.css">
     <title>BitePlanr | Cart</title>
     <link
       rel="stylesheet"
@@ -24,24 +23,39 @@
     </div>
   </head>
   <body>
-      <div class="shopping-cart">
-        <% let total = 0 %>
-        <% for (let i = 0; i < items.length; i++) { %>
-          <div class="cart-item">
-            <div class="item-image">
-              <img src="<%= items[i].image_url %>" alt="">
-            </div>
-            <div class="item-details">
-              <h3><%= items[i].item %></h3>
-              <p>Price: <%= items[i].price %> Fr</p>
-            </div>
+
+    <div class="shopping-cart">
+      <% let total = 0 %> 
+      <% for (let i = 0; i < cartItems.length; i++) { %>
+        <div class="cart-item">
+          <div class="item-image">
+            <img src="<%= cartItems[i].image_url %>" alt="" />
           </div>
-          <% total += items[i].price %>
-        <% } %>
-        <div id="sum">
-          <h2>Total Price: <%= total %></h2>
-          <h4>Send <%= total %> Fr to "Organisation.Twint.Id.Items" to claim.</h4>
+          <div class="item-details">
+            <h3><%= cartItems[i].item %></h3>
+            <p>Price: <%= cartItems[i].price %> Fr</p>
+          </div>
         </div>
+        <% total += cartItems[i].price %> 
+      <% } %>
+      <div id="sum">
+        <h2>Total Price: <%= total %></h2>
+        <h4>Send <%= total %> Fr to "Organisation.Twint.Id.Items" to claim.</h4>
       </div>
-      </body>
+    </div>
+    
+
+
+
+    <div class="footer">
+      <div class="footer-content">
+        <h3>BitePlanr</h3>
+        <p>Diese Website ist ein Projekt für das Lernatelier und dient als Übung.</p>
+        
+    </div>
+    <div class="footer-bottom">
+        <p>copyright &copy;2023 BBBaden. | Alek Cvetkovski, Elbish Bhusal, Matteo Jakob & Michael Ruzicic</span></p>
+    </div>
+    </div>
+  </body>
 </html>

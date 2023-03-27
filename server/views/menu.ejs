@@ -6,38 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/shopping-cart-Matteo.css" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+  />
+
     <title>Menu</title>
   </head>
   <body>
-    <header>
-      <img
-        src="https://cdn.pixabay.com/photo/2016/12/27/13/10/logo-1933884_1280.png"
-        alt="logo"
-      />
-      <li><a href="/">HOME</a></li>
-      <li><a href="/menuEJS">MENU</a></li>
-      <li>
-        <a href="/shopping-cartEJS" class="fas fa-cart-shopping"
-          >Shopping-cart</a
-        >
-      </li>
-      <li><a href="/registerEJS" class="registerejs">register</a></li>
-      <div id="user">
-        <% if (typeof loginMessage !== 'undefined') { %>
-        <img src="img/login_yes.png" />
-
-        <% } else { %>
-        <img src="img/User.webp" />
-
-        <% } %>
+    <div class="container-header">
+      <div class="nav">
+        <a href="/"><img src="../img/logo_white.png" class="logo" /> </a>
+        <ul>
+          <li><a href="/">HOME</a></li>
+          <li><a id="login-link" href="/loginEJS">LOGIN | REGISTER</a></li>
+          <li><a href="/shopping-cartEJS" class="fas fa-cart-shopping"></a></li>
+          <li><a href="#" class="fas fa-user"></a></li>
+          <div id="user">
+            <% if (typeof loginMessage !== 'undefined') { %>
+            <script>
+              const loginLink = document.getElementById("login-link");
+              const capitalizedMessage = "<%= loginMessage %>".toUpperCase();
+              loginLink.innerHTML = capitalizedMessage;
+              loginLink.href = "#";
+              // const homeLink = document.querySelector(".nav li:first-child");
+              // homeLink.insertAdjacentHTML(
+              //   "afterend",
+              //   '<li><a href="/menuEJS" class="nav-menu">MENU</a></li>'
+              // );
+            </script>
+            <% } else { %> <% } %>
+          </div>
+        </ul>
       </div>
-    </header>
-    <div class="home">
-      <p>This is the menu</p>
-      <button>&darr; Explore &darr;</button>
-      <div id="menuContents"></div>
     </div>
-    <script src="../public/scripts/00_script.js"></script>
-    <script src="../../server/app.js"></script>
+
+    <div class="shopping-cart">
+      <% let total = 0 %> <% for (let i = 0; i < items.length; i++) { %>
+      <div class="cart-item">
+        <div class="item-image">
+          <img src="<%= items[i].image_url %>" alt="" />
+        </div>
+        <div class="item-details">
+          <h3><%= items[i].item %></h3>
+          <p>Price: <%= items[i].price %> Fr</p>
+          <button class="add-to-cart-btn" data-id="<%= i %>">
+            Add to cart
+          </button>
+        </div>
+      </div>
+      <% total += items[i].price %> <% } %>
+      <div id="sum">
+        <h2>Total Price: <%= total %></h2>
+        <h4>Send <%= total %> Fr to "Organisation.Twint.Id.Items" to claim.</h4>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+    <script>
+      const cartItems = [];
+
+      document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const itemId = btn.getAttribute("data-id");
+          const item = items[itemId];
+          cartItems.push(item);
+        });
+      });
+    </script>
   </body>
 </html>
