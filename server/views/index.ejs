@@ -22,6 +22,7 @@
           <li><a href="#" class="fas fa-user"></a></li>
  
         </ul>
+        
       </div>
       <div class="content">
         <h1>BitePlanr</h1>
@@ -95,7 +96,15 @@
           <p>copyright &copy;2023 BBBaden. | Alek Cvetkovski, Elbish Bhusal, Matteo Jakob & Michael Ruzicic</span></p>
       </div>
       </div>
-      <script src="../public/scripts/00_script.js"></script>
-      <script src="../../server/app.js"></script>
+      <script>
+     const loginLink = document.getElementById('login-link');
+        if (typeof loggedIn !== 'undefined') { 
+          loginLink.innerHTML = "Hello Kali";
+        } else { 
+          loginLink.innerHTML = 'Login / Register';
+        } 
+      </script>
+   
+      
   </body>
 </html>

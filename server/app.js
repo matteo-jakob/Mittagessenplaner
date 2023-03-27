@@ -82,6 +82,7 @@ app.post("/login", async (req, res) => {
 
     if (password == user.passwordR) {
       // send a response with a success message
+      req.session.loggedIn = true;
       const messageContent = `Hello ${name}`;
       console.log(messageContent);
 
@@ -102,6 +103,14 @@ app.post("/login", async (req, res) => {
   } finally {
     client.close();
   }
+});
+
+app.get("/", function (req, res) {
+  const messageContent = `Hello ${name}`;
+  res.render("index", {
+    loggedIn: req.session.loggedIn,
+    loginMessage: messageContent,
+  });
 });
 
 app.post("/register", async (req, res) => {
