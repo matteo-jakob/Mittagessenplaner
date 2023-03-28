@@ -71,9 +71,14 @@ const items = [
 ];
 
 app.post("/add-to-cart", (req, res) => {
-  const item = req.body;
-  shoppingItems.push(item);
-  res.sendStatus(200);
+  try {
+    var item = req.body;
+    shoppingItems.push(item);
+    res.sendStatus(200);
+  } catch (err) {
+    console.error("Failed to add item to cart:", err);
+    res.status(500).send({ error: "Failed to add item to cart" });
+  }
 });
 
 app.get("/menu/getAll", menuController.getAll);
@@ -88,11 +93,12 @@ app.get("/loginEJS", (req, res) => {
 app.get("/menuEJS", (req, res) => {
   res.render("menu.ejs", { items: items });
 });
-const updatedShopppingItems = shoppingItems.map(itemId => {
-  const item = items.find(item => item.id === itemId);
-  return { id: itemId, name: item.name, price: item.price }
-})
+let updatedShopppingItems = shoppingItems.map((itemId) => {
+  const item = items.find((item) => item.id === parseInt(itemId));
+  return { id: itemId, name: item.name, price: item.price };
+});
 app.get("/shopping-cartEJS", (req, res) => {
+  console.log(updatedShopppingItems);
   res.render("shopping-cart.ejs", { cartItems: updatedShopppingItems });
 });
 
