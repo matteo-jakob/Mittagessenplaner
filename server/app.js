@@ -39,30 +39,35 @@ const dbName = "Mittagessenplaner";
 var shoppingItems = [];
 const items = [
   {
+    id: 0,
     item: "Potatoes",
     price: 10,
     image_url:
       "https://cdn.pixabay.com/photo/2016/08/11/08/43/potatoes-1585060_1280.jpg",
   },
   {
+    id: 1,
     item: "Rice",
     price: 8,
     image_url:
       "https://cdn.pixabay.com/photo/2019/02/15/03/28/rice-3997767_1280.jpg",
   },
   {
+    id: 2,
     item: "Flour",
     price: 10,
     image_url:
       "https://cdn.pixabay.com/photo/2020/05/12/17/54/rolling-pin-5164240_960_720.jpg",
   },
   {
+    id: 3,
     item: "Water",
     price: 3,
     image_url:
       "https://cdn.pixabay.com/photo/2018/07/09/15/20/desire-3526366_960_720.jpg",
   },
   {
+    id: 4,
     item: "Cola",
     price: 4.5,
     image_url:
@@ -74,6 +79,7 @@ app.post("/add-to-cart", (req, res) => {
   try {
     var item = req.body;
     shoppingItems.push(item);
+    console.log(shoppingItems);
     res.sendStatus(200);
   } catch (err) {
     console.error("Failed to add item to cart:", err);
@@ -93,13 +99,23 @@ app.get("/loginEJS", (req, res) => {
 app.get("/menuEJS", (req, res) => {
   res.render("menu.ejs", { items: items });
 });
-let updatedShopppingItems = shoppingItems.map((itemId) => {
-  const item = items.find((item) => item.id === itemId);
-  return { id: itemId, name: item.name, price: item.price };
-});
+
 app.get("/shopping-cartEJS", (req, res) => {
-  console.log(updatedShopppingItems);
-  res.render("shopping-cart.ejs", { cartItems: updatedShopppingItems });
+  let updatedShoppingItems = [];
+  if (shoppingItems) {
+    for (let i = 0; i < shoppingItems.length; i++) {
+      let itemId = parseInt(shoppingItems[i].id);
+      let item = items.find((item) => item.id === itemId);
+
+      if (item) {
+        updatedShoppingItems.push(item);
+      }
+    }
+  }
+  console.log(
+    "Updated Shopping items: " + JSON.stringify(updatedShoppingItems)
+  );
+  res.render("shopping-cart.ejs", { cartItems: updatedShoppingItems });
 });
 
 app.get("/registerEJS", (req, res) => {
