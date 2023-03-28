@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/shopping-cart-Matteo.css" />
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-  />
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
 
     <title>Menu</title>
   </head>
@@ -41,7 +41,6 @@
         </ul>
       </div>
     </div>
-
     <div class="shopping-cart">
       <% let total = 0 %> <% for (let i = 0; i < items.length; i++) { %>
       <div class="cart-item">
@@ -57,25 +56,40 @@
         </div>
       </div>
       <% total += items[i].price %> <% } %>
-      <div id="sum">
-        <h2>Total Price: <%= total %></h2>
-        <h4>Send <%= total %> Fr to "Organisation.Twint.Id.Items" to claim.</h4>
-      </div>
+      <div id="sum"></div>
     </div>
-  </div>
-  </div>
-
-
-
 
     <script>
-      const cartItems = [];
+      /*const cartItems = [];
 
+            document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
+              btn.addEventListener("click", () => {
+                const itemId = btn.getAttribute("data-id");
+                const item = items[itemId];
+                cartItems.push(item);
+              });
+            });*/
       document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
           const itemId = btn.getAttribute("data-id");
-          const item = items[itemId];
-          cartItems.push(item);
+          const itemsList = <%= items %>;
+          const item = itemsList[itemId];
+
+          fetch("/add-to-cart", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(item),
+          })
+            .then((response) => {
+              if (response.ok) {
+                console.log("Item added to cart successfully");
+              } else {
+                console.error("Failed to add item to cart");
+              }
+            })
+            .catch((error) => {
+              console.error("Failed to add item to cart:", error);
+            });
         });
       });
     </script>

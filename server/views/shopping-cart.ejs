@@ -23,39 +23,43 @@
     </div>
   </head>
   <body>
-
     <div class="shopping-cart">
-      <% let total = 0 %> 
-      <% for (let i = 0; i < cartItems.length; i++) { %>
-        <div class="cart-item">
-          <div class="item-image">
-            <img src="<%= cartItems[i].image_url %>" alt="" />
-          </div>
-          <div class="item-details">
-            <h3><%= cartItems[i].item %></h3>
-            <p>Price: <%= cartItems[i].price %> Fr</p>
-          </div>
+      <% let total = 0 %> <% for (let i = 0; i < cartItems.length; i++) { %>
+      <div class="cart-item">
+        <div class="item-image">
+          <img src="<%= cartItems[i].image_url %>" alt="" />
         </div>
-        <% total += cartItems[i].price %> 
-      <% } %>
+        <div class="item-details">
+          <h3><%= cartItems[i].item %></h3>
+          <p>Price: <%= cartItems[i].price %> Fr</p>
+        </div>
+      </div>
+      <% total += cartItems[i].price %> <% } %>
       <div id="sum">
         <h2>Total Price: <%= total %></h2>
-        <h4>Send <%= total %> Fr to "Organisation.Twint.Id.Items" to claim.</h4>
+        <h4>
+          Send <%= total %> Fr to "Organisation.Twint.Id.Items" on Twint to
+          claim.
+        </h4>
+        <button onclick="alert(`Order was confirmed of <%= total %> Fr`)">
+          Confirm Order
+        </button>
       </div>
     </div>
-    
-
-
 
     <div class="footer">
       <div class="footer-content">
         <h3>BitePlanr</h3>
-        <p>Diese Website ist ein Projekt für das Lernatelier und dient als Übung.</p>
-        
-    </div>
-    <div class="footer-bottom">
-        <p>copyright &copy;2023 BBBaden. | Alek Cvetkovski, Elbish Bhusal, Matteo Jakob & Michael Ruzicic</span></p>
-    </div>
+        <p>
+          Diese Website ist ein Projekt für das Lernatelier und dient als Übung.
+        </p>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          copyright &copy;2023 BBBaden. | Alek Cvetkovski, Elbish Bhusal, Matteo
+          Jakob & Michael Ruzicic
+        </p>
+      </div>
     </div>
   </body>
 </html>

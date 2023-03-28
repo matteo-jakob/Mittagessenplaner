@@ -36,6 +36,46 @@ const Register = mongoose.model("Logindaten", RegisterSchema);
 const dbName = "Mittagessenplaner";
 
 // ========================================= API ===================================================
+var shoppingItems = [];
+const items = [
+  {
+    item: "Potatoes",
+    price: 10,
+    image_url:
+      "https://cdn.pixabay.com/photo/2016/08/11/08/43/potatoes-1585060_1280.jpg",
+  },
+  {
+    item: "Rice",
+    price: 8,
+    image_url:
+      "https://cdn.pixabay.com/photo/2019/02/15/03/28/rice-3997767_1280.jpg",
+  },
+  {
+    item: "Flour",
+    price: 10,
+    image_url:
+      "https://cdn.pixabay.com/photo/2020/05/12/17/54/rolling-pin-5164240_960_720.jpg",
+  },
+  {
+    item: "Water",
+    price: 3,
+    image_url:
+      "https://cdn.pixabay.com/photo/2018/07/09/15/20/desire-3526366_960_720.jpg",
+  },
+  {
+    item: "Cola",
+    price: 4.5,
+    image_url:
+      "https://cdn.pixabay.com/photo/2016/11/29/13/49/bottle-1869990_960_720.jpg",
+  },
+];
+
+app.post("/add-to-cart", (req, res) => {
+  const item = req.body;
+  shoppingItems.push(item);
+  res.sendStatus(200);
+});
+
 app.get("/menu/getAll", menuController.getAll);
 
 app.get("/", (req, res) => {
@@ -46,43 +86,11 @@ app.get("/loginEJS", (req, res) => {
   res.render("login.ejs");
 });
 app.get("/menuEJS", (req, res) => {
-  const items = [
-    {
-      item: "Potatoes",
-      price: 10,
-      image_url:
-        "https://cdn.pixabay.com/photo/2016/08/11/08/43/potatoes-1585060_1280.jpg",
-    },
-    {
-      item: "Rice",
-      price: 8,
-      image_url:
-        "https://cdn.pixabay.com/photo/2019/02/15/03/28/rice-3997767_1280.jpg",
-    },
-    {
-      item: "Flour",
-      price: 10,
-      image_url:
-        "https://cdn.pixabay.com/photo/2020/05/12/17/54/rolling-pin-5164240_960_720.jpg",
-    },
-    {
-      item: "Water",
-      price: 3,
-      image_url:
-        "https://cdn.pixabay.com/photo/2018/07/09/15/20/desire-3526366_960_720.jpg",
-    },
-    {
-      item: "Cola",
-      price: 4.5,
-      image_url:
-        "https://cdn.pixabay.com/photo/2016/11/29/13/49/bottle-1869990_960_720.jpg",
-    },
-  ];
   res.render("menu.ejs", { items: items });
 });
 
 app.get("/shopping-cartEJS", (req, res) => {
-  res.render("shopping-cart.ejs");
+  res.render("shopping-cart.ejs", { cartItems: shoppingItems });
 });
 
 app.get("/registerEJS", (req, res) => {
