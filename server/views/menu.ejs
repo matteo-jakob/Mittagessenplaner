@@ -50,7 +50,7 @@
         <div class="item-details">
           <h3><%= items[i].item %></h3>
           <p>Price: <%= items[i].price %> Fr</p>
-          <button class="add-to-cart-btn" data-id="<%= i %>">
+          <button class="add-to-cart-btn" data-id="<%= i %>" data-name="<%= items[i].item %>" data-price="<%= items[i].price %>">
             Add to cart
           </button>
         </div>
@@ -72,13 +72,11 @@
       document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
           const itemId = btn.getAttribute("data-id");
-          const itemsList = <%= items %>;
-          const item = itemsList[itemId];
 
           fetch("/add-to-cart", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(item),
+            body: itemId,
           })
             .then((response) => {
               if (response.ok) {

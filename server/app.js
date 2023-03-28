@@ -88,9 +88,12 @@ app.get("/loginEJS", (req, res) => {
 app.get("/menuEJS", (req, res) => {
   res.render("menu.ejs", { items: items });
 });
-
+const updatedShopppingItems = shoppingItems.map(itemId => {
+  const item = items.find(item => item.id === itemId);
+  return { id: itemId, name: item.name, price: item.price }
+})
 app.get("/shopping-cartEJS", (req, res) => {
-  res.render("shopping-cart.ejs", { cartItems: shoppingItems });
+  res.render("shopping-cart.ejs", { cartItems: updatedShopppingItems });
 });
 
 app.get("/registerEJS", (req, res) => {
