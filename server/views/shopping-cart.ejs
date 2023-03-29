@@ -39,6 +39,7 @@
       <div id="sum">
         <h2>Total Price: <%= total %></h2>
         <button
+          id="confirmBtn"
           onclick="alert(`Order was confirmed of <%= total %> Fr \nSend <%= total %> Fr to Organisation.Twint.Id.Items on Twint to claim.`)"
         >
           Confirm Order
@@ -60,5 +61,19 @@
         </p>
       </div>
     </div>
+    <script>
+      //chatgpt
+      const btn = document.getElementById("confirmBtn");
+      var pressedBtn = false;
+      btn.addEventListener("click", pressed);
+      setTimeout(function () {
+        if (pressedBtn == false) {
+          alert("Please confirm your order.");
+        }
+      }, 10000);
+      function pressed() {
+        pressedBtn = true;
+      }
+    </script>
   </body>
 </html>

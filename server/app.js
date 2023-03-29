@@ -1,5 +1,3 @@
-const menuController = require("./controller/01_MenuController.js");
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
@@ -87,8 +85,6 @@ app.post("/add-to-cart", (req, res) => {
   }
 });
 
-app.get("/menu/getAll", menuController.getAll);
-
 app.get("/", (req, res) => {
   res.render("index.ejs");
 });
@@ -105,6 +101,7 @@ app.get("/shopping-cartEJS", (req, res) => {
   if (shoppingItems) {
     for (let i = 0; i < shoppingItems.length; i++) {
       let itemId = parseInt(shoppingItems[i].id);
+      //chatGPT for the find function
       let item = items.find((item) => item.id === itemId);
 
       if (item) {
